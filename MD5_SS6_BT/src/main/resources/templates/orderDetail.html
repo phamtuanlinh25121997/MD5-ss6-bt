@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <a href="/shop">Shop</a>
+</p>
+<table border="1" th:object="${order}">
+    <tr>
+        <td>Name</td>
+        <td>Date</td>
+        <td>Quantity</td>
+        <td>Price</td>
+        <td>Amount</td>
+    </tr>
+    <tr  th:each="item: ${order.getItems()}">
+        <td th:text="${item.getKey().name}"></td>
+        <td th:text="${order.localDateTime}"></td>
+        <td th:text="${item.getValue()}"></td>
+        <td th:text="${item.getKey().price}"></td>
+        <td th:text="${item.getKey().price*item.getValue()}"></td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td th:text="${order.getTotal()}"></td>
+    </tr>
+</table>
+</body>
+</html>
